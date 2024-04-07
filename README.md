@@ -1,6 +1,7 @@
 ## About The Project
 
 You can quickly check your typing speed in the console
+
 The peculiarity of this application is that you can easily change everything you need, all settings are placed in separate files
 
 ![image](https://github.com/Raretet11/typing_test/assets/113609098/9ad37d44-bb14-42ba-a46b-33849ca18d03)
