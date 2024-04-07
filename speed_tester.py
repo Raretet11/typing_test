@@ -38,7 +38,11 @@ class SpeedTester:
             self.IO_Handler.show_text(text_to_type, next_symbol_index, colors)
         finish_time: float = time()
 
-        self.IO_Handler.show_stat(finish_time - start_time, errors_amount, len(text_to_type), next_symbol_index)
+        total_time: float = 0.0
+        if started:
+            total_time = finish_time - start_time
+            
+        self.IO_Handler.show_stat(total_time, errors_amount, len(text_to_type), next_symbol_index)
 
     def __run_speed_test(self, text_to_type: str) -> None:
         self.IO_Handler.show_text(text_to_type, 0, [settings.DEFAULT_COLOR for i in range(len(text_to_type))])
