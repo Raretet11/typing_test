@@ -20,6 +20,7 @@ class IOHandler:
     def show_text(self, text: str, next_symbol_index: int, colors: List[str]) -> None:
         self.clear_screen()
         self.__draw_progress_bar(len(text), next_symbol_index, settings.PROGRESS_BAR_LENGTH)
+        
         symbols_in_line_amount: int = 0
         for i, char in enumerate(text):
             symbols_in_line_amount += 1
@@ -36,7 +37,9 @@ class IOHandler:
     
     def show_stat(self, total_time: float, errors_amount: int, text_len: int, last_ind: int) -> None:
         total_time_formated = click.style(str(round(total_time, 2)) + 's', fg=settings.IMPORTANT_INFORMATION_COLOR, bold=True)
-        typing_speed_formated = click.style(round(last_ind / (total_time / 60), 2), fg=settings.IMPORTANT_INFORMATION_COLOR, bold=True)
+        typing_speed_formated = 0.0
+        if total_time != 0.0:
+            typing_speed_formated = click.style(round(last_ind / (total_time / 60), 2), fg=settings.IMPORTANT_INFORMATION_COLOR, bold=True)
         errors_amount_formated = click.style(errors_amount, fg=settings.BAD_INFORMATION_COLOR, bold=True)
         done_formated = click.style(str(round((last_ind / text_len) * 100.0, 2)) + '%', fg=settings.IMPORTANT_INFORMATION_COLOR, bold=True)
         click.echo(f'   Total time: {total_time_formated}')
